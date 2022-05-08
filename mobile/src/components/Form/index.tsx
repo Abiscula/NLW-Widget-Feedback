@@ -1,6 +1,7 @@
-import { ArrowLeft } from 'phosphor-react-native';
-import React from 'react';
+import React, { useState }from 'react';
 import { View, TextInput, Image, Text, TouchableOpacity } from 'react-native';
+import { ArrowLeft } from 'phosphor-react-native';
+import { captureScreen } from 'react-native-view-shot';
 import { theme } from '../../theme';
 import { feedbackTypes } from '../../utils/feedbackTypes'
 import { FeedbackType } from '../../components/Widget'
@@ -15,7 +16,22 @@ interface Props {
 
 export function Form({ feedbackType }: Props) {
 
+    const [screenshot, setScreenshot] = useState<string | null>(null)
+
     const feedbackTypeInfo = feedbackTypes[feedbackType]
+
+    function hadnleScreenshot() {
+        captureScreen({
+            format: 'jpg',
+            quality: 0.8
+        })
+            .then(uri => setScreenshot(uri))
+            .catch(error => console.log(error))
+    }
+
+    function hadnleScreenshotRemove() {
+        setScreenshot(null)
+    }
 
     return (
         <View style={styles.container}>
@@ -46,9 +62,9 @@ export function Form({ feedbackType }: Props) {
 
             <View style={styles.footer}>
                 <ScreenshotButton
-                    onTakeShot={() => {}}
-                    onRemoveShot={() => {}}
-                    screenshot="https://github.com/Abiscula.png"
+                    onTakeShot={hadnleScreenshot}
+                    onRemoveShot={hadnleScreenshotRemove}
+                    screenshot={screenshot}
                 />
 
                 <Button 
