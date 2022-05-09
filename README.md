@@ -5,7 +5,7 @@ Aplicação desenvolvida durante a NLW Return (Mission Impulse)
 O app consiste em um widget de feedaback que poderá ser adicionado a qualquer site e/ou aplicação,
 permitindo uma maior interação com os usuários.
 
-O usuário será capaz de enviar feedbacks referentes a problemas, idéias e outros, além de digitar um texto explicando
+O usuário será capaz de enviar feedbacks referentes a problemas, idéias e outros. Além de digitar um texto explicando
 o motivo do contato, será possivel tirar uma screenshot com um único clique que de forma automática será anexada (encoding: base64) ao
 objeto que será encaminhado para o backend. A foto é um parâmetro opcional.
 
